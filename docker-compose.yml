@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  # Serviço para o PostgreSQL
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: seplag_mt
+      POSTGRES_PASSWORD: Seplag@Mt2025
+      POSTGRES_DB: seplag_mt
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  # Serviço para o Laravel
+  laravel:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    volumes:
+      - .:/var/www
+    networks:
+      - app-network
+    depends_on:
+      - postgres
+
+  # Serviço para o Nginx
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./docker/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+      - .:/var/www
+    ports:
+      - "80:80"
+    networks:
+      - app-network
+    depends_on:
+      - laravel
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  pgdata:
+
