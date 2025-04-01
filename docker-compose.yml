@@ -5,9 +5,9 @@ services:
   postgres:
     image: postgres:15
     environment:
-      POSTGRES_USER: seplag_mt
-      POSTGRES_PASSWORD: Seplag@Mt2025
-      POSTGRES_DB: seplag_mt
+      POSTGRES_USER:seplag_mt
+      POSTGRES_PASSWORD:Seplag@Mt2025
+      POSTGRES_DB:seplag_mt
     volumes:
       - pgdata:/var/lib/postgresql/data
     networks:
