@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('unidade_endereco', function (Blueprint $table) {
-            $table->integer('unid_id')->nullable();
-            $table->integer('end_id')->nullable();
+        Schema::create('cidade', function (Blueprint $table) {
+            $table->bigIncrements('cid_id');
+            $table->string('cid_nome', 200)->nullable();
+            $table->char('cid_uf', 2)->nullable();
             $table->timestamps();
-
-            $table->foreign('unid_id')->references('unid_id')->on('unidade');
-            $table->foreign('end_id')->references('end_id')->on('endereco');
         });
     }
 
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('unidade_endereco');
+        Schema::dropIfExists('cidade');
     }
 };

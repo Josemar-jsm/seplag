@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('foto_pessoa', function (Blueprint $table) {
-            $table->id('fp_id');
-            $table->integer('pes_id');
-            $table->date('fp_data')->nullable();
-            $table->string('fp_bucket', 50)->nullable();
-            $table->string('fp_hash', 50)->nullable();
+        Schema::create('servidor_temporario', function (Blueprint $table) {
+            $table->unsignedBigInteger('pes_id');
+            $table->date('sf_data_admissao')->nullable();
+            $table->date('sf_data_demissao')->nullable();
             $table->timestamps();
 
             $table->foreign('pes_id')->references('pes_id')->on('pessoa');
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('foto_pessoa');
+        Schema::dropIfExists('servidor_temporario');
     }
 };

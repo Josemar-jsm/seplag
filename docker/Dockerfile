@@ -22,7 +22,7 @@ WORKDIR /var/www
 COPY ../../ .
 
 # Instalar dependências do Laravel
-# RUN composer install --optimize-autoloader --no-dev
+RUN composer install --optimize-autoloader --no-dev
 
 
 # Expor a porta do PHP-FPM

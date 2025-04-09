@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('locacao', function (Blueprint $table) {
-            $table->id('lot_id');
-            $table->integer('pes_id');
-            $table->integer('unid_id');
+        Schema::create('lotacao', function (Blueprint $table) {
+            $table->bigIncrements('lot_id');
+            $table->unsignedBigInteger('pes_id');
+            $table->unsignedBigInteger('unid_id');
             $table->date('lot_data_lotacao')->nullable();
             $table->date('lot_data_remocao')->nullable();
             $table->string('lot_portaria', 100)->nullable();
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('locacao');
+        Schema::dropIfExists('lotacao');
     }
 };

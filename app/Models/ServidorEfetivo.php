@@ -10,6 +10,8 @@ class ServidorEfetivo extends Model
     use HasFactory;
 
     protected $table = 'servidor_efetivo';
+    protected $primaryKey = 'pes_id';
+    
 
     protected $fillable = [
         'pes_id',
@@ -18,6 +20,6 @@ class ServidorEfetivo extends Model
 
     public function pessoa()
     {
-        return $this->belongsTo(Pessoa::class);
+        return $this->belongsTo(Pessoa::class, 'pes_id', 'pes_id');
     }
 }

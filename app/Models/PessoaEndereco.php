@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class PessoaEndereco extends Model
-{
+class PessoaEndereco extends Model {
+
     use HasFactory;
 
     protected $table = 'pessoa_endereco';
-
+    public $incrementing = false;
+    protected $primaryKey = null;
     protected $fillable = [
         'pes_id',
         'end_id',
@@ -23,6 +24,6 @@ class PessoaEndereco extends Model
 
     public function endereco()
     {
-        return $this->belongsTo(Endereco::class);
+        return $this->belongsTo(Endereco::class, 'end_id', 'end_id');
     }
 }

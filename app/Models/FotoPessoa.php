@@ -11,7 +11,7 @@ class FotoPessoa extends Model
 
     protected $table = 'foto_pessoa';
 
-    protected $primaryKey = 'pes_id';
+    protected $primaryKey = 'fp_id';
 
     protected $fillable = [
         'fp_data',
@@ -22,6 +22,6 @@ class FotoPessoa extends Model
 
     public function pessoa()
     {
-        return $this->belongsTo(Pessoa::class);
+        return $this->belongsTo(Pessoa::class,'pes_id','pes_id');
     }
 }
