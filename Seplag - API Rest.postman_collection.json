@@ -1,0 +1,793 @@
+{
+	"info": {
+		"_postman_id": "5a424ff2-70ba-4072-8272-5b60f3ecd5cb",
+		"name": "Seplag - API Rest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34510112"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "POST /v1/auth/login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{auth_key}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"usuario@example.com\",\n  \"password\": \"senha123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /v1/auth/logout",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/auth/logout",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /v1/auth/forgot-password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/ecmascript",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"usuario@example.com\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/auth/forgot-password",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ServidoresEfetivos",
+			"item": [
+				{
+					"name": "GET /v1/servidores-efetivos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/servidores-efetivos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"servidores-efetivos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /v1/servidores-efetivos/{id}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/servidores-efetivos/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"servidores-efetivos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /v1/servidores-efetivos",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"pessoa\": {\n    \"nome\": \"Jo\\u00e3o Silva\",\n    \"data_nascimento\": \"1985-07-01\",\n    \"sexo\": \"Masculino\",\n    \"mae\": \"Maria Silva\",\n    \"pai\": \"Jos\\u00e9 Silva\"\n  },\n  \"foto\": {\n    \"base64\": \"data:image/png;base64,...\"\n  },\n  \"endereco\": {\n    \"tipo_logradouro\": \"Rua\",\n    \"logradouro\": \"Das Palmeiras\",\n    \"numero\": 120,\n    \"bairro\": \"Centro\",\n    \"cid_id\": 1\n  },\n  \"lotacao\": {\n    \"unid_id\": 1,\n    \"lot_data_lotacao\": \"2025-04-08\",\n    \"lot_portaria\": \"PORT123\"\n  },\n  \"se_matricula\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/servidores-efetivos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"servidores-efetivos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT /v1/servidores-efetivos/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+								"key": "Authorization",
+								"value": "Bearer {{auth_key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"pessoa\": {\n    \"nome\": \"Jo\\u00e3o Silva Atualizado\",\n    \"data_nascimento\": \"1985-07-01\",\n    \"sexo\": \"Masculino\",\n    \"mae\": \"Maria Atualizada\",\n    \"pai\": \"Jos\\u00e9 Atualizado\"\n  },\n  \"foto\": {\n    \"base64\": \"data:image/png;base64,...\"\n  },\n  \"endereco\": {\n    \"tipo_logradouro\": \"Rua\",\n    \"logradouro\": \"Nova Rua\",\n    \"numero\": 321,\n    \"bairro\": \"Novo Bairro\",\n    \"cid_id\": 1\n  },\n  \"lotacao\": {\n    \"unid_id\": 2,\n    \"lot_data_lotacao\": \"2025-05-10\",\n    \"lot_portaria\": \"PORT999\"\n  },\n  \"se_matricula\": \"789012\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/servidores-efetivos/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"servidores-efetivos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /v1/servidores-efetivos/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/servidores-efetivos/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"servidores-efetivos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /v1/servidores-efetivos/unidade/{unid_id}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/servidores-efetivos/unidade/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"servidores-efetivos",
+								"unidade",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /v1/servidores-efetivos/endereco-funcional?nome=joao",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/servidores-efetivos/endereco-funcional?nome=Jo",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"servidores-efetivos",
+								"endereco-funcional"
+							],
+							"query": [
+								{
+									"key": "nome",
+									"value": "Jo"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Unidades",
+			"item": [
+				{
+					"name": "Listar Unidades",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/unidades",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"unidades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Visualizar Unidade",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_key}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/unidades/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"unidades",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Unidade",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer{{auth_key}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"unid_nome\": \"Secretaria de Educa\\u00e7\\u00e3o\",\n  \"unid_sigla\": \"SEDUC\",\n  \"endereco\": {\n    \"tipo_logradouro\": \"Avenida\",\n    \"logradouro\": \"Historiador Rubens de Mendon\\u00e7a\",\n    \"numero\": \"1234\",\n    \"bairro\": \"Centro Pol\\u00edtico\",\n    \"cid_id\": 1\n  }\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/unidades",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"unidades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Unidade",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_key}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"unid_nome\": \"Secretaria de Sa\\u00fade\",\n  \"unid_sigla\": \"SES\",\n  \"endereco\": {\n    \"tipo_logradouro\": \"Rua\",\n    \"logradouro\": \"S\\u00e3o Joaquim\",\n    \"numero\": \"456\",\n    \"bairro\": \"Centro\",\n    \"cid_id\": 1\n  }\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/unidades/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"unidades",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir Unidade",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_key}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/unidades/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"unidades",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Lotações",
+			"item": [
+				{
+					"name": "GET /v1/lotacoes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/lotacoes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"lotacoes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /v1/lotacoes/{id}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+								"key": "Authorization",
+								"value": "Bearer {{auth_key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/lotacoes/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"lotacoes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /v1/lotacoes",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"pes_id\": 1,\n  \"unid_id\": 1,\n  \"lot_data_lotacao\": \"2023-01-01\",\n  \"lot_data_remocao\": null,\n  \"lot_portaria\": \"PORT123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/lotacoes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"lotacoes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT /v1/lotacoes/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"lot_data_remocao\": \"2024-01-01\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/lotacoes/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"lotacoes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /v1/lotacoes/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/lotacoes/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"lotacoes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Fotos Temporárias",
+			"item": [
+				{
+					"name": "URL Temporária da Foto",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/servidores-efetivos/1/foto-temporaria",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"servidores-efetivos",
+								"1",
+								"foto-temporaria"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Múltiplas Fotos",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_key}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fotos\": [\n    {\n      \"base64\": \"data:image/png;base64,SU...\"\n    },\n    {\n      \"base64\": \"data:image/jpeg;base64,/9j/4AAQ...\"\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/servidores-efetivos/1/fotos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"servidores-efetivos",
+								"1",
+								"fotos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

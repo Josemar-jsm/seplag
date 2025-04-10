@@ -1,66 +1,95 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Nome: JOSEMAR CRISTIANO DA SILVA
+Inscrição: 10161
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# 🏛️ SEPLAG - API REST
 
-## About Laravel
+Este projeto é uma API RESTful desenvolvida em Laravel com suporte a autenticação via JWT, banco de dados relacional e execução em ambiente Docker.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🚀 Como executar o projeto
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 📥 1. Clonar o repositório
 
-## Learning Laravel
+```bash
+git clone https://github.com/Josemar-jsm/seplag.git
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 📁 2. Entrar na pasta do projeto
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+```bash
+cd seplag
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 🐳 3. Subir os containers com Docker
 
-## Laravel Sponsors
+```bash
+docker-compose up -d
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 📦 4. Instalar as dependências do Laravel
 
-### Premium Partners
+```bash
+docker exec -it seplag-mt_laravel_1 composer install
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### 🗃️ 5. Executar as migrations
 
-## Contributing
+```bash
+docker exec -it seplag-mt_laravel_1 php artisan migrate
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 🌱 6. Popular o banco de dados com seeders
 
-## Code of Conduct
+```bash
+docker exec -it seplag-mt_laravel_1 php artisan db:seed
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Esse comando executa os seeders:
+- `UnidadeSeeder`
+- `UsuarioSeeder` (incluindo criação de um usuário para autenticação)
 
-## Security Vulnerabilities
+### 🔐 7. Gerar o token JWT
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+docker exec -it seplag-mt_laravel_1 php artisan jwt:secret
+```
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 🧪 Testando as APIs com Postman
+
+Você pode importar os arquivos disponíveis na **raiz do projeto**:
+
+- `Seplag - API Rest.postman_collection.json`
+- `Seplag_Env.postman_environment.json`
+
+### 💡 Como importar:
+1. Abra o Postman.
+2. Clique em **Importar**.
+3. Selecione os arquivos `.json` acima.
+4. Use o ambiente `Seplag_Env`.
+5. Teste os endpoints com base na coleção `Seplag - API Rest`.
+
+---
+
+## ⚙️ Tecnologias Utilizadas
+
+- Laravel
+- PHP
+- PostgreSQL
+- Docker / Docker Compose
+- JWT (Autenticação)
+- Postman (para testes)
+- Seeders e Migrations
+
+---
+
+## 👤 Autor
+
+Desenvolvido por [Josemar Silva](https://github.com/Josemar-jsm)
+
+
+
+
+
