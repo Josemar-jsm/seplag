@@ -56,13 +56,15 @@ class AuthApiController {
 
     protected function respondWithToken($token)
     {
-        // Obtém o usuário autenticado
         $user = JWTAuth::user();
+
+        $ttl = (int) config('jwt.ttl', 5); // minutos
 
         $data = [
             'data' => new UserResource($user),
             'access_token' => $token,
             'token_type' => 'bearer',
+            'expires_in' => now()->addMinutes($ttl), // ✅ corrigido
         ];
 
         return $this->successResponse($data, 'Logado com sucesso', Response::HTTP_OK);
