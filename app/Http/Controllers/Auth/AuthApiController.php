@@ -67,4 +67,14 @@ class AuthApiController {
 
         return $this->successResponse($data, 'Logado com sucesso', Response::HTTP_OK);
     }
+
+    public function refresh()
+    {
+        try {
+            $newToken = JWTAuth::parseToken()->refresh();
+            return $this->respondWithToken($newToken);
+        } catch (\Tymon\JWTAuth\Exceptions\JWTException $ex) {
+            return $this->errorResponse('error', $ex->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
 }
