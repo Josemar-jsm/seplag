@@ -73,6 +73,59 @@ Você pode importar os arquivos disponíveis na **raiz do projeto**:
 
 ---
 
+
+
+
+## 🔐 Autenticação com JWT
+
+A autenticação da API utiliza tokens JWT (JSON Web Token). O token tem validade de **5 minutos** e pode ser renovado antes de expirar.
+
+### Fluxo de autenticação
+1. Faça login com `POST /api/v1/auth/login` e receba um token JWT.
+2. Use esse token para autenticar requisições protegidas via header:
+   ```
+   Authorization: Bearer {seu_token}
+   ```
+3. Antes que o token expire, chame `POST /api/v1/auth/refresh` para gerar um novo token.
+4. Para obter os dados do usuário autenticado, utilize `GET /api/v1/auth/me`.
+
+### Endpoints de autenticação
+- `POST /api/v1/auth/login` — Login do usuário
+- `POST /api/v1/auth/logout` — Logout do usuário
+- `POST /api/v1/auth/refresh` — Renovar o token JWT
+- `GET /api/v1/auth/me` — Retornar dados do usuário autenticado
+
+
+## 📚 Endpoints Disponíveis
+
+### 🔐 Autenticação
+- `POST /api/v1/auth/login` — Login do usuário
+- `POST /api/v1/auth/logout` — Logout do usuário
+- `POST /api/v1/auth/forgot-password` — Recuperação de senha
+### 🏛️ Unidades
+- `GET /api/v1/unidades` — Listar unidades
+- `GET /api/v1/unidades/{id}` — Visualizar unidade
+- `POST /api/v1/unidades` — Cadastrar unidade
+- `PUT /api/v1/unidades/{id}` — Atualizar unidade
+- `DELETE /api/v1/unidades/{id}` — Excluir unidade
+### 👨‍💼 Servidores Efetivos
+- `GET /api/v1/servidores-efetivos` — Listar servidores efetivos
+- `GET /api/v1/servidores-efetivos/{id}` — Visualizar servidor efetivo
+- `POST /api/v1/servidores-efetivos` — Cadastrar servidor efetivo
+- `PUT /api/v1/servidores-efetivos/{id}` — Atualizar servidor efetivo
+- `DELETE /api/v1/servidores-efetivos/{id}` — Excluir servidor efetivo
+- `GET /api/v1/servidores-efetivos/unidade/{unid_id}` — Listar servidores de uma unidade
+- `GET /api/v1/servidores-efetivos/endereco-funcional?nome=Jo` — Buscar endereço funcional por nome
+### 🗂️ Lotações
+- `GET /api/v1/lotacoes` — Listar lotações
+- `GET /api/v1/lotacoes/{id}` — Visualizar lotação
+- `POST /api/v1/lotacoes` — Cadastrar lotação
+- `PUT /api/v1/lotacoes/{id}` — Atualizar lotação
+- `DELETE /api/v1/lotacoes/{id}` — Excluir lotação
+### 🖼️ Fotos Temporárias
+- `GET /servidores-efetivos/{id}/foto-temporaria` — Obter URL temporária de uma foto
+- `POST /servidores-efetivos/{id}/fotos` — Upload de múltiplas fotos em base64
+
 ## ⚙️ Tecnologias Utilizadas
 
 - Laravel
