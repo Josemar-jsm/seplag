@@ -76,7 +76,7 @@ class ServidorTemporarioRepository
             'pessoa.foto',
             'pessoa.enderecos.endereco.cidade',
             'pessoa.lotacoes.unidade'
-        ])->get();
+        ])->paginate();
     }
 
     public function buscarPorId($id): ?ServidorTemporario

@@ -12,7 +12,7 @@ class UnidadeRepository {
 
     public function listarTodos()
     {
-        return Unidade::with('enderecos.cidade')->get();
+        return Unidade::with('enderecos.cidade')->paginate();
     }
 
     public function buscarPorId($id): Unidade

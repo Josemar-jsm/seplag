@@ -77,7 +77,7 @@ class ServidorEfetivoRepository {
                     'pessoa.foto',
                     'pessoa.enderecos.endereco.cidade',
                     'pessoa.lotacoes.unidade'
-                ])->get();
+                ])->paginate();
     }
 
     public function buscarPorId($id): ?ServidorEfetivo
@@ -171,7 +171,7 @@ class ServidorEfetivoRepository {
                         ->whereHas('pessoa.lotacoes', function ($q) use ($unid_id) {
                             $q->where('unid_id', $unid_id);
                         })
-                        ->get()
+                        ->paginate()
                         ->map(function ($servidor) {
                             $pessoa = $servidor->pessoa;
                             return [
@@ -189,7 +189,7 @@ class ServidorEfetivoRepository {
                         ->whereHas('pessoa', function ($q) use ($nome) {
                             $q->where('pes_nome', 'like', "%$nome%");
                         })
-                        ->get()
+                        ->paginate()
                         ->map(function ($lotacao) {
                             return [
                                 'servidor' => $lotacao->pessoa->pes_nome,
