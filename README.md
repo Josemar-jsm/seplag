@@ -30,19 +30,19 @@ docker-compose up -d
 ### 📦 4. Instalar as dependências do Laravel
 
 ```bash
-docker exec -it seplag-mt_laravel_1 composer install
+docker exec -it seplag_laravel_1 composer install
 ```
 
 ### 🗃️ 5. Executar as migrations
 
 ```bash
-docker exec -it seplag-mt_laravel_1 php artisan migrate
+docker exec -it seplag_laravel_1 php artisan migrate
 ```
 
 ### 🌱 6. Popular o banco de dados com seeders
 
 ```bash
-docker exec -it seplag-mt_laravel_1 php artisan db:seed
+docker exec -it seplag_laravel_1 php artisan db:seed
 ```
 
 Esse comando executa os seeders:
@@ -52,7 +52,7 @@ Esse comando executa os seeders:
 ### 🔐 7. Gerar o token JWT
 
 ```bash
-docker exec -it seplag-mt_laravel_1 php artisan jwt:secret
+docker exec -it seplag_laravel_1 php artisan jwt:secret
 ```
 
 ---
