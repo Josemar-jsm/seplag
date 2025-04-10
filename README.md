@@ -73,9 +73,6 @@ Você pode importar os arquivos disponíveis na **raiz do projeto**:
 
 ---
 
-
-
-
 ## 🔐 Autenticação com JWT
 
 A autenticação da API utiliza tokens JWT (JSON Web Token). O token tem validade de **5 minutos** e pode ser renovado antes de expirar.
@@ -95,6 +92,20 @@ A autenticação da API utiliza tokens JWT (JSON Web Token). O token tem validad
 - `POST /api/v1/auth/refresh` — Renovar o token JWT
 - `GET /api/v1/auth/me` — Retornar dados do usuário autenticado
 
+### ℹ️ Dica: como usar o token no Postman
+
+Após realizar o login (`POST /api/v1/auth/login`), copie o valor de `access_token` da resposta.
+
+Abra o Postman, vá até o ambiente `Seplag_Env` e atualize a variável `auth_key` com o token:
+
+1. Clique em "Environments" no canto superior direito.
+2. Selecione `Seplag_Env`.
+3. Na linha da variável `auth_key`, cole o token JWT recebido.
+4. Salve.
+
+A partir disso, os endpoints protegidos que usam `{{auth_key}}` no header `Authorization` funcionarão normalmente.
+
+---
 
 ## 📚 Endpoints Disponíveis
 
@@ -126,6 +137,8 @@ A autenticação da API utiliza tokens JWT (JSON Web Token). O token tem validad
 - `GET /servidores-efetivos/{id}/foto-temporaria` — Obter URL temporária de uma foto
 - `POST /servidores-efetivos/{id}/fotos` — Upload de múltiplas fotos em base64
 
+---
+
 ## ⚙️ Tecnologias Utilizadas
 
 - Laravel
@@ -141,7 +154,6 @@ A autenticação da API utiliza tokens JWT (JSON Web Token). O token tem validad
 ## 👤 Autor
 
 Desenvolvido por [Josemar Silva](https://github.com/Josemar-jsm)
-
 
 
 
