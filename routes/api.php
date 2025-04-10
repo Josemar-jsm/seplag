@@ -15,7 +15,9 @@ Route::prefix('v1')->group(function () {
     Route::middleware(['auth:api'])->group(function () {
         Route::post('/auth/logout', [AuthApiController::class, 'logout'])->name('logoutv1.auth');
 
-        Route::post('/v1/refresh', [AuthApiController::class, 'refresh']);
+        Route::post('/auth/refresh', [AuthApiController::class, 'refresh']);
+        Route::get('/auth/me', [AuthApiController::class, 'me']);
+
 
         Route::get('servidores-efetivos/unidade/{unid_id}', [ServidorEfetivoController::class, 'lotadosNaUnidade']);
         Route::get('servidores-efetivos/endereco-funcional', [ServidorEfetivoController::class, 'enderecoFuncionalPorNome']);

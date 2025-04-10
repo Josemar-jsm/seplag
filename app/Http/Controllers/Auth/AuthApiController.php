@@ -77,4 +77,14 @@ class AuthApiController {
             return $this->errorResponse('error', $ex->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
+
+    public function me()
+    {
+        try {
+            $user = JWTAuth::parseToken()->authenticate();
+            return $this->successResponse(new UserResource($user), 'Usuário autenticado', Response::HTTP_OK);
+        } catch (\Tymon\JWTAuth\Exceptions\JWTException $ex) {
+            return $this->errorResponse('error', $ex->getMessage(), Response::HTTP_UNAUTHORIZED);
+        }
+    }
 }
